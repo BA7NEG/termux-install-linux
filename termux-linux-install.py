@@ -10,10 +10,19 @@ def logo():
  / ___ \| |_) || |_| | | |_) | | |___| |___| |___
 /_/   \_\____/  \___/  |____/  |_____|_____|_____|
 """)
-    copyright_title = 'ICAgIFRlcm11eCDpq5jnuqfnu4jnq6/lronoo4Xkvb/nlKjphY3nva7mlZnnqIs='
-    copyright_url = 'd3d3LmFtb2JpbGUtc29sdXRpb25zLmNvbS5jbg=='
-    print(base64.b64decode(copyright_title).decode('utf-8'))
-    print(base64.b64decode(copyright_url).decode('utf-8'))
+    copyright_title_b64 = 'ICAgIFRlcm11eCDpq5jnuqfnu4jnq6/lronoo4Xkvb/nlKjphY3nva7mlZnnqIs='
+    copyright_url_b64 = 'd3d3LmFtb2JpbGUtc29sdXRpb25zLmNvbS5jbg=='
+    # decode once and print decoded text
+    try:
+        copyright_title = base64.b64decode(copyright_title_b64).decode('utf-8')
+    except Exception:
+        copyright_title = ''
+    try:
+        copyright_url = base64.b64decode(copyright_url_b64).decode('utf-8')
+    except Exception:
+        copyright_url = ''
+    print(copyright_title)
+    print(copyright_url)
     print('')
     print(' 1. 安装 Ubuntu       2. 卸载 Ubuntu')
     print(' 3. 安装 Kali         4. 卸载 Kali')
@@ -22,6 +31,7 @@ def logo():
     print(' 9. 安装 Fedora      10. 卸载 Fedora')
     print('11. 查询已安装系统   12. 退出脚本')
     print('')
+    # return decoded strings (更合理)
     return copyright_title, copyright_url
 
 
@@ -190,8 +200,9 @@ if __name__ == "__main__":
         print('正在安装相关依赖包: screenfetch')
         os.system('pkg install screenfetch -y')
 
-    copyright = logo()
-    if copyright[0][10:13] != '11e' or copyright[1][10:13] != '93d':
+    title, url = logo()
+    # 更稳健的校验：decode 后检查合理的关键字，而不是对编码串做魔法索引比较
+    if 'Termux' not in title or 'amobile-solutions' not in url:
         print('校验失败 退出脚本')
         os._exit(0)
 
