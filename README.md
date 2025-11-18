@@ -16,7 +16,7 @@ pkg install proot git python -y
 # 基本使用
 
 ```bash
-git clone https://github.com/sqlsec/termux-install-linux
+git clone https://github.com/BA7NEG/termux-install-linux
 cd termux-install-linux
 python termux-linux-install.py
 ```
