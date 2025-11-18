@@ -9,7 +9,7 @@ def logo():
   / _ \ |  _ \ | | | | |  _ \  | |   | |   |  _|
  / ___ \| |_) || |_| | | |_) | | |___| |___| |___
 /_/   \_\____/  \___/  |____/  |_____|_____|_____|
-
+""")
     copyright_title = 'ICAgIFRlcm11eCDpq5jnuqfnu4jnq6/lronoo4Xkvb/nlKjphY3nva7mlZnnqIs='
     copyright_url = 'aHR0cHM6Ly93d3cuc3Fsc2VjLmNvbS8yMDE4LzA1L3Rlcm11eC5odG1s'
     print(base64.b64decode(copyright_title).decode('utf-8'))
